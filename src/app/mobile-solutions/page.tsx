@@ -1,13 +1,21 @@
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import { ProductCard } from '@/components/product/ProductCard';
-import { Truck, Thermometer, Bath, Building } from 'lucide-react';
+import { Truck, Thermometer, Bath, Building, Container, Snowflake, IceCreamCone, PanelTop, Warehouse } from 'lucide-react';
 import { categories } from '@/lib/config';
+import { CategorySelect } from '@/components/ui/CategorySelect';
+
+export const dynamic = 'force-dynamic';
 
 const subcategoryIcons: Record<string, React.ReactNode> = {
-  FRIDGES: <Thermometer size={32} />,
+  FREEZERS: <Thermometer size={32} />,
   TOILETS: <Bath size={32} />,
   CLINICS: <Building size={32} />,
+  TRAILERS: <Truck size={32} />,
+  COLD_ROOMS: <Snowflake size={32} />,
+  ICE: <IceCreamCone size={32} />,
+  INSULATED_PANELS: <PanelTop size={32} />,
+  STEEL_STRUCTURES: <Warehouse size={32} />,
 };
 
 export default async function MobileSolutionsPage() {
@@ -46,7 +54,7 @@ export default async function MobileSolutionsPage() {
           </div>
           <p className="text-xl text-brown-200 max-w-2xl">
             High-quality mobile units available for purchase.
-            Fridges, toilets, and mobile clinics delivered to your location.
+            Freezers, toilets, clinics, trailers, cold rooms, and more delivered to your location.
           </p>
           <p className="mt-4 text-brown-300">
             Looking to rent? <Link href="/rentals" className="text-primary-400 hover:underline">View our rental options →</Link>
@@ -54,11 +62,18 @@ export default async function MobileSolutionsPage() {
         </div>
       </section>
 
-      {/* Subcategories */}
+      {/* Subcategories - Grid on desktop, dropdown on mobile */}
       <section className="py-12 bg-brown-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold mb-8 text-brown-900">Browse by Category</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+
+          {/* Mobile: Dropdown select */}
+          <div className="md:hidden mb-6">
+            <CategorySelect categories={subcategories} basePath="/mobile-solutions" />
+          </div>
+
+          {/* Desktop: Grid */}
+          <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6">
             {subcategories.map((sub) => (
               <Link
                 key={sub.slug}

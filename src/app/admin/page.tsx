@@ -3,6 +3,8 @@ import { formatCurrency } from '@/lib/utils';
 import { Package, ShoppingBag, Calendar, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminDashboardPage() {
   // Fetch stats
   const [productCount, orderCount, rentalCount, recentOrders] = await Promise.all([

@@ -16,9 +16,14 @@ const CATEGORY_OPTIONS = [
 
 const SUBCATEGORY_OPTIONS: Record<ProductCategory, { value: ProductSubcategory; label: string }[]> = {
   MOBILE_SOLUTIONS: [
-    { value: 'FRIDGES', label: 'Mobile Fridges' },
+    { value: 'FREEZERS', label: 'Freezers' },
     { value: 'TOILETS', label: 'Mobile Toilets' },
     { value: 'CLINICS', label: 'Mobile Clinics' },
+    { value: 'TRAILERS', label: 'Trailers' },
+    { value: 'COLD_ROOMS', label: 'Cold Rooms' },
+    { value: 'ICE', label: 'Ice' },
+    { value: 'INSULATED_PANELS', label: 'Insulated Panels' },
+    { value: 'STEEL_STRUCTURES', label: 'Steel Structures' },
   ],
   MARULA_OIL: [
     { value: 'MARULA_OIL_RETAIL', label: 'Retail (50ml - 500ml)' },
@@ -48,7 +53,7 @@ export default function NewProductPage() {
     description: '',
     longDescription: '',
     category: 'MOBILE_SOLUTIONS' as ProductCategory,
-    subcategory: 'FRIDGES' as ProductSubcategory,
+    subcategory: 'FREEZERS' as ProductSubcategory,
     availableForRental: true, // Default true for Mobile Solutions
     price: '',
     salePrice: '',

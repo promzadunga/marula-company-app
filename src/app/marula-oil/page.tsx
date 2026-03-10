@@ -4,6 +4,8 @@ import { ProductCard } from '@/components/product/ProductCard';
 import { Droplets, Sparkles, Gift, Package } from 'lucide-react';
 import { categories } from '@/lib/config';
 
+export const dynamic = 'force-dynamic';
+
 const subcategoryIcons: Record<string, React.ReactNode> = {
   PURE_OILS: <Droplets size={32} />,
   GIFT_SETS: <Gift size={32} />,

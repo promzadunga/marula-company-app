@@ -3,10 +3,27 @@ export const siteConfig = {
   name: "Marula",
   description: "Mobile Solutions & Premium Marula Oil Products",
   tagline: "Quality Solutions for Your Business",
+  website: "www.marulacompany.co.za",
   contact: {
-    email: "info@marula.co.za",
-    phone: "+27 60 540 5426",
-    whatsapp: "27605405426", // WhatsApp number without + or spaces
+    email: "sales@marulacompany.co.za",
+    phone: "+27 (12) 885-1507",
+    whatsapp: "27760124549", // WhatsApp number without + or spaces
+  },
+  locations: {
+    limpopo: {
+      name: "Limpopo Office",
+      address: "26 Thabo Mbeki Street",
+      city: "Polokwane",
+      province: "Limpopo",
+      postalCode: "0700",
+    },
+    gauteng: {
+      name: "Gauteng Office",
+      address: "100 Witch Hazel Avenue, Highveld Techno Park",
+      city: "Centurion",
+      province: "Gauteng",
+      postalCode: "0157",
+    },
   },
   social: {
     instagram: "#",
@@ -22,9 +39,14 @@ export const categories = {
     name: "Mobile Solutions",
     slug: "mobile-solutions",
     subcategories: [
-      { name: "Fridges", slug: "fridges", value: "FRIDGES" },
+      { name: "Freezers", slug: "freezers", value: "FREEZERS" },
       { name: "Toilets", slug: "toilets", value: "TOILETS" },
       { name: "Clinics", slug: "clinics", value: "CLINICS" },
+      { name: "Trailers", slug: "trailers", value: "TRAILERS" },
+      { name: "Cold Rooms", slug: "cold-rooms", value: "COLD_ROOMS" },
+      { name: "Ice", slug: "ice", value: "ICE" },
+      { name: "Insulated Panels", slug: "insulated-panels", value: "INSULATED_PANELS" },
+      { name: "Steel Structures", slug: "steel-structures", value: "STEEL_STRUCTURES" },
     ],
   },
   MARULA_OIL: {

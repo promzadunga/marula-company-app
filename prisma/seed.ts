@@ -34,7 +34,7 @@ async function main() {
       description: 'High-quality mobile refrigeration unit perfect for events, catering, and temporary cold storage needs.',
       longDescription: 'Our mobile fridge units are designed for commercial use, featuring industrial-grade refrigeration technology that maintains consistent temperatures. Ideal for outdoor events, construction sites, and temporary installations.',
       category: 'MOBILE_SOLUTIONS',
-      subcategory: 'FRIDGES',
+      subcategory: 'FREEZERS',
       listingType: 'RENTAL_ONLY',
       price: 45000,
       rentalPriceDaily: 1500,

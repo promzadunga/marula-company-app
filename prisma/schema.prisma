@@ -2,13 +2,15 @@
 // Mobile Solutions (Sales & Rentals) + Marula Oil Products
 
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "rhel-openssl-3.0.x"]
+  previewFeatures = ["multiSchema"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  schemas  = ["marula"]
 }
 
 // ============================================
@@ -18,22 +20,33 @@ datasource db {
 enum Role {
   ADMIN
   CUSTOMER
+
+  @@schema("marula")
 }
 
 enum ProductCategory {
   MOBILE_SOLUTIONS
   MARULA_OIL
+
+  @@schema("marula")
 }
 
 enum ProductSubcategory {
   // Mobile Solutions
-  FRIDGES
+  FREEZERS
   TOILETS
   CLINICS
+  TRAILERS
+  COLD_ROOMS
+  ICE
+  INSULATED_PANELS
+  STEEL_STRUCTURES
   // Marula Oil (pure oil in different sizes)
   MARULA_OIL_RETAIL    // Small bottles for retail (50ml - 500ml)
   MARULA_OIL_WHOLESALE // Larger quantities (1L - 20L)
   MARULA_OIL_BULK      // Bulk/Industrial (drums, tons)
+
+  @@schema("marula")
 }
 
 enum OrderStatus {
@@ -45,6 +58,8 @@ enum OrderStatus {
   COMPLETED         // Order completed
   CANCELLED         // Order cancelled
   REFUNDED          // Order refunded
+
+  @@schema("marula")
 }
 
 enum PaymentStatus {
@@ -52,6 +67,8 @@ enum PaymentStatus {
   PAID
   FAILED
   REFUNDED
+
+  @@schema("marula")
 }
 
 enum RentalStatus {
@@ -61,12 +78,16 @@ enum RentalStatus {
   RETURNED          // Item returned
   OVERDUE           // Past return date
   CANCELLED         // Rental cancelled
+
+  @@schema("marula")
 }
 
 enum ListingType {
   SALE_ONLY         // Product is only for purchase
   RENTAL_ONLY       // Product is only for rental
   SALE_AND_RENTAL   // Product can be purchased or rented
+
+  @@schema("marula")
 }
 
 // ============================================
@@ -99,6 +120,7 @@ model User {
   updatedAt     DateTime  @updatedAt
 
   @@map("users")
+  @@schema("marula")
 }
 
 model Account {
@@ -119,6 +141,7 @@ model Account {
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
+  @@schema("marula")
 }
 
 model Session {
@@ -129,6 +152,7 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
+  @@schema("marula")
 }
 
 model VerificationToken {
@@ -138,6 +162,7 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verification_tokens")
+  @@schema("marula")
 }
 
 // ============================================
@@ -192,6 +217,7 @@ model Product {
   updatedAt       DateTime            @updatedAt
 
   @@map("products")
+  @@schema("marula")
 }
 
 model ProductImage {
@@ -217,6 +243,7 @@ model ProductImage {
   @@index([productId])
   @@index([productId, isPrimary])
   @@map("product_images")
+  @@schema("marula")
 }
 
 model ProductSpec {
@@ -230,6 +257,7 @@ model ProductSpec {
 
   @@index([productId])
   @@map("product_specs")
+  @@schema("marula")
 }
 
 // Product Variants for different sizes/options
@@ -270,6 +298,7 @@ model ProductVariant {
 
   @@index([productId])
   @@map("product_variants")
+  @@schema("marula")
 }
 
 // ============================================
@@ -319,6 +348,7 @@ model Order {
   updatedAt       DateTime      @updatedAt
 
   @@map("orders")
+  @@schema("marula")
 }
 
 model OrderItem {
@@ -352,6 +382,7 @@ model OrderItem {
 
   @@index([orderId])
   @@map("order_items")
+  @@schema("marula")
 }
 
 // ============================================
@@ -395,6 +426,7 @@ model Rental {
   @@index([productId, startDate, endDate])
   @@index([status])
   @@map("rentals")
+  @@schema("marula")
 }
 
 // ============================================
@@ -410,4 +442,5 @@ model Settings {
   updatedAt DateTime @updatedAt
 
   @@map("settings")
+  @@schema("marula")
 }

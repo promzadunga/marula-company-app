@@ -6,14 +6,21 @@ import { ArrowLeft } from 'lucide-react';
 import { categories } from '@/lib/config';
 import { ProductSubcategory } from '@prisma/client';
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: Promise<{ subcategory: string }>;
 }
 
 const subcategoryMap: Record<string, ProductSubcategory> = {
-  'fridges': 'FRIDGES',
+  'freezers': 'FREEZERS',
   'toilets': 'TOILETS',
   'clinics': 'CLINICS',
+  'trailers': 'TRAILERS',
+  'cold-rooms': 'COLD_ROOMS',
+  'ice': 'ICE',
+  'insulated-panels': 'INSULATED_PANELS',
+  'steel-structures': 'STEEL_STRUCTURES',
 };
 
 export async function generateStaticParams() {

@@ -4,7 +4,8 @@ import { ArrowRight, Truck, Droplets, Shield, Clock, Leaf } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
 import { prisma } from '@/lib/prisma';
 import { ProductSlider } from '@/components/product/ProductSlider';
-import { YouTubeBackground } from '@/components/ui/YouTubeBackground';
+
+export const dynamic = 'force-dynamic';
 
 async function getRecentProducts() {
   const products = await prisma.product.findMany({
@@ -36,12 +37,18 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero Section with Video Background */}
-      <YouTubeBackground
-        videoId="jgNmxalaye0"
-        className="text-white"
-        overlayClassName="bg-gradient-to-r from-brown-900/90 via-brown-900/80 to-brown-900/70"
-      >
-        <div className="container mx-auto px-4 py-20 md:py-32">
+      <section className="relative overflow-hidden text-white">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="https://tg6jb9lfyw.ufs.sh/f/O8IwYKxyJ072aFfEH0vcYsESHaNm1qWxZIPB4woLXijz5QOn" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-brown-900/90 via-brown-900/80 to-brown-900/70" />
+        <div className="relative z-10 container mx-auto px-4 py-20 md:py-32">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               <span className="text-primary-400">Quality</span> Solutions for Your Business
@@ -68,7 +75,7 @@ export default async function HomePage() {
             </div>
           </div>
         </div>
-      </YouTubeBackground>
+      </section>
 
       {/* Categories */}
       <section className="py-16 bg-brown-50">

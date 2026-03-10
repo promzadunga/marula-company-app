@@ -6,6 +6,8 @@ import { ArrowLeft } from 'lucide-react';
 import { categories } from '@/lib/config';
 import { ProductSubcategory } from '@prisma/client';
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: Promise<{ subcategory: string }>;
 }

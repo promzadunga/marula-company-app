@@ -4,6 +4,8 @@ import { prisma } from '@/lib/prisma';
 import { Calendar, Truck, Clock, Shield } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 
+export const dynamic = 'force-dynamic';
+
 export default async function RentalsPage() {
   // Fetch rental products (RENTAL_ONLY or SALE_AND_RENTAL)
   const products = await prisma.product.findMany({

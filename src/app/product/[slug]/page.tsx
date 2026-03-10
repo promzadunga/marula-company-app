@@ -5,6 +5,8 @@ import { ImageGallery } from '@/components/product/ImageGallery';
 import { ArrowLeft, Truck, Shield, Calendar } from 'lucide-react';
 import { ProductPurchaseSection } from '@/components/product/ProductPurchaseSection';
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
