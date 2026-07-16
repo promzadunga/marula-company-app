@@ -12,17 +12,17 @@ export const siteConfig = {
   locations: {
     limpopo: {
       name: "Limpopo Office",
-      address: "26 Thabo Mbeki Street",
-      city: "Polokwane",
+      address: "47A Dihlabaneng, Ga-Mashegoana",
+      city: "Sekhukhune",
       province: "Limpopo",
-      postalCode: "0700",
+      postalCode: "1124",
     },
     gauteng: {
       name: "Gauteng Office",
-      address: "100 Witch Hazel Avenue, Highveld Techno Park",
+      address: "Building 8, Central Office Park, 13 Esdoring St, Highveld Techno Park",
       city: "Centurion",
       province: "Gauteng",
-      postalCode: "0157",
+      postalCode: "0169",
     },
   },
   social: {

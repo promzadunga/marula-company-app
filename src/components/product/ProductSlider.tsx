@@ -65,14 +65,14 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
   if (products.length === 0) return null;
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-brown-50">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex items-end justify-between mb-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-brown-900">{title}</h2>
             {subtitle && (
-              <p className="text-gray-600 mt-2">{subtitle}</p>
+              <p className="text-brown-600 mt-2">{subtitle}</p>
             )}
           </div>
           <div className="hidden md:flex items-center gap-2">
@@ -81,8 +81,8 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
               disabled={!canScrollLeft}
               className={`p-2 rounded-full border transition ${
                 canScrollLeft
-                  ? 'border-gray-300 hover:bg-gray-100 text-gray-700'
-                  : 'border-gray-200 text-gray-300 cursor-not-allowed'
+                  ? 'border-brown-300 hover:bg-brown-100 text-brown-700'
+                  : 'border-brown-200 text-brown-300 cursor-not-allowed'
               }`}
               aria-label="Scroll left"
             >
@@ -93,8 +93,8 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
               disabled={!canScrollRight}
               className={`p-2 rounded-full border transition ${
                 canScrollRight
-                  ? 'border-gray-300 hover:bg-gray-100 text-gray-700'
-                  : 'border-gray-200 text-gray-300 cursor-not-allowed'
+                  ? 'border-brown-300 hover:bg-brown-100 text-brown-700'
+                  : 'border-brown-200 text-brown-300 cursor-not-allowed'
               }`}
               aria-label="Scroll right"
             >
@@ -107,7 +107,7 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
         <div className="relative">
           {/* Left Gradient */}
           {canScrollLeft && (
-            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-brown-50 to-transparent z-10 pointer-events-none" />
           )}
 
           <div
@@ -129,7 +129,7 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
                 >
                   <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition h-full">
                     {/* Image */}
-                    <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-brown-100">
                       {primaryImage ? (
                         <Image
                           src={primaryImage.url}
@@ -138,7 +138,7 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-gray-400">
+                        <div className="w-full h-full flex items-center justify-center text-brown-400">
                           No image
                         </div>
                       )}
@@ -162,7 +162,7 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
                       <h3 className="font-semibold text-brown-900 group-hover:text-primary-500 transition line-clamp-1">
                         {product.name}
                       </h3>
-                      <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                      <p className="text-sm text-brown-600 mt-1 line-clamp-2">
                         {product.description}
                       </p>
                       <div className="mt-3 flex items-center gap-2">
@@ -171,7 +171,7 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
                             <span className="text-lg font-bold text-primary-500">
                               {formatCurrency(product.salePrice!)}
                             </span>
-                            <span className="text-sm text-gray-400 line-through">
+                            <span className="text-sm text-brown-400 line-through">
                               {formatCurrency(product.price)}
                             </span>
                           </>
@@ -190,7 +190,7 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
 
           {/* Right Gradient */}
           {canScrollRight && (
-            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-brown-50 to-transparent z-10 pointer-events-none" />
           )}
         </div>
 
@@ -201,8 +201,8 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
             disabled={!canScrollLeft}
             className={`p-2 rounded-full border transition ${
               canScrollLeft
-                ? 'border-gray-300 bg-white text-gray-700'
-                : 'border-gray-200 text-gray-300 cursor-not-allowed'
+                ? 'border-brown-300 bg-white text-brown-700'
+                : 'border-brown-200 text-brown-300 cursor-not-allowed'
             }`}
             aria-label="Scroll left"
           >
@@ -213,8 +213,8 @@ export function ProductSlider({ products, title, subtitle }: ProductSliderProps)
             disabled={!canScrollRight}
             className={`p-2 rounded-full border transition ${
               canScrollRight
-                ? 'border-gray-300 bg-white text-gray-700'
-                : 'border-gray-200 text-gray-300 cursor-not-allowed'
+                ? 'border-brown-300 bg-white text-brown-700'
+                : 'border-brown-200 text-brown-300 cursor-not-allowed'
             }`}
             aria-label="Scroll right"
           >

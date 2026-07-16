@@ -37,6 +37,30 @@ module.exports = {
           950: '#1a100c',
         },
         // Accent green
+        // Marula Oil page — design system from cousin's brief
+        marula: {
+          'green-deep': '#1B3A2E',
+          'green-medium': '#2D5442',
+          'gold': '#C89B3F',
+          'gold-light': '#D4A94A',
+          'gold-dark': '#A67C2E',
+          'cream': '#F5EFE0',
+          'cream-light': '#FBF7ED',
+          'nut-brown': '#6B4423',
+          'text-dark': '#2A2A2A',
+          'text-muted': '#6B6B6B',
+        },
+        // Engineering page — dark charcoal/slate palette
+        eng: {
+          'navy-deep': '#1A1A1A',
+          'navy': '#2E2E2E',
+          'steel': '#4A4A4A',
+          'sky': '#5D8BB8',
+          'cream': '#F8F6F0',
+          'cream-light': '#FBFAF6',
+          'gray-warm': '#E8E4DC',
+          'gray-mid': '#7F8C8D',
+        },
         accent: {
           50: '#f0fdf2',
           100: '#dcfce2',
@@ -53,6 +77,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
       },
     },
   },

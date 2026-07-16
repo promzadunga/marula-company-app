@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { prisma } from '@/lib/prisma';
 import { ProductCard } from '@/components/product/ProductCard';
 import { ArrowLeft } from 'lucide-react';
@@ -62,8 +63,15 @@ export default async function MobileSolutionsSubcategoryPage({ params }: Props) 
   return (
     <div>
       {/* Header */}
-      <section className="bg-brown-900 text-white py-12">
-        <div className="container mx-auto px-4">
+      <section className="relative text-white py-12 md:py-16 overflow-hidden">
+        <Image
+          src="/mobile.jpeg"
+          alt="Mobile solutions background"
+          fill
+          className="absolute inset-0 object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-brown-900/90 via-brown-900/80 to-brown-900/70" />
+        <div className="container mx-auto px-4 relative z-10">
           <Link
             href="/mobile-solutions"
             className="inline-flex items-center gap-2 text-brown-300 hover:text-primary-400 mb-4 transition"

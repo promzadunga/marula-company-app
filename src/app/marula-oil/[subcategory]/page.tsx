@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { prisma } from '@/lib/prisma';
 import { ProductCard } from '@/components/product/ProductCard';
 import { ArrowLeft } from 'lucide-react';
@@ -57,8 +58,15 @@ export default async function MarulaOilSubcategoryPage({ params }: Props) {
   return (
     <div>
       {/* Header */}
-      <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-12">
-        <div className="container mx-auto px-4">
+      <section className="relative text-white py-12 md:py-16 overflow-hidden">
+        <Image
+          src="/marula.jpg"
+          alt="Marula oil background"
+          fill
+          className="absolute inset-0 object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/90 via-primary-800/80 to-primary-900/70" />
+        <div className="container mx-auto px-4 relative z-10">
           <Link
             href="/marula-oil"
             className="inline-flex items-center gap-2 text-primary-200 hover:text-white mb-4 transition"
@@ -67,7 +75,7 @@ export default async function MarulaOilSubcategoryPage({ params }: Props) {
             Back to Marula Oil
           </Link>
           <h1 className="text-4xl font-bold">{subcategoryInfo?.name || 'Products'}</h1>
-          <p className="text-primary-100 mt-2">
+          <p className="text-primary-200 mt-2">
             Explore our {subcategoryInfo?.name.toLowerCase() || 'products'}
           </p>
         </div>

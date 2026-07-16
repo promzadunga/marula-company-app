@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { sendRentalConfirmation, sendRentalAdminNotification, RentalEmailData } from '@/lib/email';
 
 // Generate unique rental/order number
 function generateOrderNumber(): string {
@@ -205,6 +206,29 @@ export async function POST(request: NextRequest) {
 
       return { order, orderItem, rental };
     });
+
+    // Fire-and-forget: send confirmation emails
+    const emailData: RentalEmailData = {
+      orderNumber: result.order.orderNumber,
+      rentalNumber: result.rental.rentalNumber,
+      customerName: customer.name,
+      customerEmail: customer.email || '',
+      customerPhone: customer.phone,
+      deliveryAddress: deliveryAddress || '',
+      deliveryCity: deliveryCity || '',
+      productName: product.name,
+      startDate: start.toISOString(),
+      endDate: end.toISOString(),
+      rentalDays,
+      dailyRate,
+      rentalTotal,
+      depositAmount,
+      grandTotal,
+    };
+    await Promise.allSettled([
+      sendRentalConfirmation(emailData),
+      sendRentalAdminNotification(emailData),
+    ]);
 
     return NextResponse.json({
       success: true,

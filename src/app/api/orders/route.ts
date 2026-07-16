@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
+import { sendOrderConfirmation, sendOrderAdminNotification, OrderEmailData } from '@/lib/email';
 
 // Generate unique order number
 function generateOrderNumber(): string {
@@ -198,6 +199,31 @@ export async function POST(request: NextRequest) {
 
       return order;
     });
+
+    // Fire-and-forget: send confirmation emails
+    const emailData: OrderEmailData = {
+      orderNumber: result.orderNumber,
+      customerName,
+      customerEmail,
+      customerPhone,
+      shippingAddress,
+      shippingCity,
+      shippingProvince: shippingProvince || '',
+      shippingPostal: shippingPostal || '',
+      items: orderItems.map((item) => ({
+        name: item.name,
+        variantName: item.variantName,
+        quantity: item.quantity,
+        unitPrice: item.price,
+        totalPrice: item.price * item.quantity,
+      })),
+      subtotal,
+      total: subtotal,
+    };
+    await Promise.allSettled([
+      sendOrderConfirmation(emailData),
+      sendOrderAdminNotification(emailData),
+    ]);
 
     return NextResponse.json({
       success: true,

@@ -11,10 +11,9 @@ import { useCart } from '@/contexts/CartContext';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Mobile Solutions', href: '/mobile-solutions' },
-  { name: 'Rentals', href: '/rentals' },
   { name: 'Marula Oil', href: '/marula-oil' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Engineering', href: '/mobile-solutions' },
+  { name: 'Rentals', href: '/rentals' },
 ];
 
 export function Header() {
@@ -47,7 +46,7 @@ export function Header() {
   };
 
   return (
-    <header className="bg-white border-b border-brown-100 sticky top-0 z-50">
+    <header className="bg-white border-b border-marula-gold/20 sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -57,7 +56,7 @@ export function Header() {
               alt="Marula Company"
               width={80}
               height={80}
-              className="rounded-full"
+              className=""
             />
           </Link>
 
@@ -70,10 +69,10 @@ export function Header() {
                   href={item.href}
                   className={cn(
                     "relative py-1 transition-colors duration-200 whitespace-nowrap",
-                    "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-primary-500 after:transition-all after:duration-300",
+                    "after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-marula-gold after:transition-all after:duration-300",
                     isActive(item.href)
-                      ? "text-primary-500 font-medium after:w-full"
-                      : "text-brown-900 hover:text-primary-500 after:w-0 hover:after:w-full"
+                      ? "text-marula-gold font-medium after:w-full"
+                      : "text-marula-green-deep hover:text-marula-gold after:w-0 hover:after:w-full"
                   )}
                 >
                   {item.name}
@@ -83,11 +82,11 @@ export function Header() {
               {/* Cart */}
               <Link
                 href="/cart"
-                className="relative p-2 hover:bg-brown-50 rounded-full transition text-brown-900 hover:text-primary-500"
+                className="relative p-2 hover:bg-marula-cream-light rounded-full transition text-marula-green-deep hover:text-marula-gold"
               >
                 <ShoppingCart size={20} />
                 {itemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-marula-gold text-white text-xs font-bold rounded-full flex items-center justify-center">
                     {itemCount > 9 ? '9+' : itemCount}
                   </span>
                 )}
@@ -97,14 +96,14 @@ export function Header() {
                 <>
                   <Link
                     href={session.user.role === 'ADMIN' ? '/admin' : '/customer'}
-                    className="flex items-center gap-2 text-brown-700 hover:text-primary-500 transition-colors duration-200"
+                    className="flex items-center gap-2 text-marula-green-deep hover:text-marula-gold transition-colors duration-200"
                   >
                     <User size={18} />
                     {session.user.role === 'ADMIN' ? 'Admin' : session.user.name?.split(' ')[0] || 'Account'}
                   </Link>
                   <button
                     onClick={() => signOut()}
-                    className="flex items-center gap-2 text-brown-700 hover:text-primary-500 transition-colors duration-200"
+                    className="flex items-center gap-2 text-marula-green-deep hover:text-marula-gold transition-colors duration-200"
                   >
                     <LogOut size={18} />
                   </button>
@@ -112,7 +111,7 @@ export function Header() {
               ) : (
                 <Link
                   href="/auth/signin"
-                  className="bg-primary-500 text-white px-4 lg:px-6 py-2 rounded-lg hover:bg-primary-600 hover:shadow-lg transition-all duration-200 whitespace-nowrap"
+                  className="bg-marula-gold text-white px-4 lg:px-6 py-2 rounded hover:bg-marula-gold-dark hover:shadow-lg transition-all duration-200 whitespace-nowrap"
                 >
                   Sign In
                 </Link>
@@ -125,18 +124,18 @@ export function Header() {
             <div className="flex items-center gap-2">
               <Link
                 href="/cart"
-                className="relative p-2 hover:bg-brown-50 rounded-full transition text-brown-900"
+                className="relative p-2 hover:bg-marula-cream-light rounded-full transition text-marula-green-deep"
               >
                 <ShoppingCart size={20} />
                 {itemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-marula-gold text-white text-xs font-bold rounded-full flex items-center justify-center">
                     {itemCount > 9 ? '9+' : itemCount}
                   </span>
                 )}
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="text-brown-900"
+                className="text-marula-green-deep"
               >
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -146,7 +145,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && isMobile && (
-          <div className="mt-4 pb-4 flex flex-col gap-2 border-t border-brown-100 pt-4">
+          <div className="mt-4 pb-4 flex flex-col gap-2 border-t border-marula-gold/20 pt-4">
             {navigation.map((item) => (
               <Link
                 key={item.href}
@@ -154,14 +153,14 @@ export function Header() {
                 className={cn(
                   "p-3 rounded-md transition-all duration-200",
                   isActive(item.href)
-                    ? "bg-primary-500 text-white font-medium"
-                    : "text-brown-900 hover:bg-brown-50"
+                    ? "bg-marula-gold text-white font-medium"
+                    : "text-marula-green-deep hover:bg-marula-cream-light"
                 )}
               >
                 {item.name}
               </Link>
             ))}
-            <div className="border-t border-brown-100 mt-2 pt-2">
+            <div className="border-t border-marula-gold/20 mt-2 pt-2">
               {session ? (
                 <>
                   <Link
@@ -169,8 +168,8 @@ export function Header() {
                     className={cn(
                       "flex items-center gap-2 p-3 rounded-md transition-all duration-200",
                       pathname?.startsWith('/admin') || pathname?.startsWith('/customer')
-                        ? "bg-primary-500 text-white font-medium"
-                        : "text-brown-900 hover:bg-brown-50"
+                        ? "bg-marula-gold text-white font-medium"
+                        : "text-marula-green-deep hover:bg-marula-cream-light"
                     )}
                   >
                     <User size={18} />
@@ -187,7 +186,7 @@ export function Header() {
               ) : (
                 <Link
                   href="/auth/signin"
-                  className="block bg-primary-500 text-white p-3 rounded-lg hover:bg-primary-600 transition-all duration-200 text-center font-medium"
+                  className="block bg-marula-gold text-white p-3 rounded hover:bg-marula-gold-dark transition-all duration-200 text-center font-medium"
                 >
                   Sign In
                 </Link>
